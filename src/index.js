@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ServiciosApiCustomers from './components/ServiciosApiCustomers';
+// import ServiciosApiCustomers from './components/ServiciosApiCustomers';
+import ServiceApiSuppliers from './components/ServiceApiSuppliers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ServiciosApiCustomers />
+  // <ServiciosApiCustomers />
+  <ServiceApiSuppliers />
 );
 
 // If you want to start measuring performance in your app, pass a function
