@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import Global from '../Global';
 
 export default class ServiceApiSuppliersSolucion extends Component {
     cajaId = React.createRef();
-    urlSuppliers = "https://services.odata.org/V4/Northwind/Northwind.svc/Suppliers"
+    urlSuppliers = Global.urlNorthwind;
+    // urlSuppliers = "https://services.odata.org/V4/Northwind/Northwind.svc/Suppliers"
     state = {
         proveedores: [],
         supplier: null
     }
 
     loadSuppliers = () => {
-        axios.get(this.urlSuppliers).then(response => {
+        let request = "suppliers";
+        axios.get(this.urlSuppliers + request).then(response => {
             console.log("Leyendo")
             this.setState({
                 proveedores: response.data.value
@@ -21,8 +24,9 @@ export default class ServiceApiSuppliersSolucion extends Component {
     findSupplierId = (event) => {
         event.preventDefault();
         let idSupplier = parseInt(this.cajaId.current.value)
+        let request = "suppliers";
         //REALIZAMOS LA PETICION DE NUEVO A TODOS LOS PROVEEDORES
-        axios.get(this.urlSuppliers).then(response => {
+        axios.get(this.urlSuppliers + request).then(response => {
             console.log("Buscando...");
             for (var supplier of response.data.value) {
                 if (supplier.SupplierID === idSupplier) {
