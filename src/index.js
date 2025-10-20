@@ -9,7 +9,10 @@ import reportWebVitals from './reportWebVitals';
 // import ServiceApiSuppliersSolucion from './components/ServiceApiSuppliersSolucion';
 // import EmpleadosDepartamento from './components/EmpleadosDepartamento';
 // import Departamentos from './components/maestrodetalle/Departamentos';
-import Cursos from './components/ejemplocomunicacion/Cursos';
+// import Cursos from './components/ejemplocomunicacion/Cursos';
+// import TablaMultiplicar from './components/TablaMultiplicar';
+import Router from './components/Router';
+import MenuRutas from './components/MenuRutas';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,7 +23,12 @@ root.render(
   // <EmpleadosOficios/>
   // <EmpleadosOficiosSolucion/>
   // <Departamentos/>
-  <Cursos />
+  // <Cursos />
+  // <TablaMultiplicar numero="7" />
+  <div style={{ margin: "auto", width: "50%" }}>
+    <MenuRutas />
+    <Router />
+  </div>
 );
 
 // If you want to start measuring performance in your app, pass a function
