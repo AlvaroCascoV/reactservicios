@@ -1,79 +1,58 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Global from '../Global'
-
+import axios from 'axios'
 export default class EmpleadosOficiosSolucion extends Component {
-    urlEmpleados = Global.urlEmpleados;
-    selectOficios = React.createRef();
-
-    loadEmpleados = () => {
-        let request = "api/Empleados"
-        axios.get(this.urlEmpleados + request).then(response => {
-            console.log("cargando empleados")
-            this.setState({
-                empleados: response.data
-            })
-        })
+    url = Global.urlEmpleadosOficios;
+    selectOficio = React.createRef();
+    state = {
+        empleados: [],
+        empleadosOficios: []
     }
-
     loadOficios = () => {
-        let request = "api/Empleados"
-        axios.get(this.urlEmpleados + request).then(response => {
-            console.log("cargando oficios")
-            this.setState({
-                empleados: response.data
-            })
-            let aux = []
-            for (const empleado of this.state.empleados) {
-                let oficio = empleado.oficio
-                if (!aux.includes(oficio)) {
-                    aux.push(oficio)
+        var request = "api/empleados";
+        axios.get(this.url + request).then(response => {
+            console.log("Leyendo empleados");
+            for (var empleado of response.data) {
+                let oficio = empleado.oficio;
+                if (!this.state.empleados.includes(oficio)) {
+                    this.state.empleados.push(oficio);
                 }
             }
             this.setState({
-                oficios: aux
-            })
-        })
-        console.log(this.state.oficios)
-    }
-
-    loadEmpleadosOficio = (event) => {
-        event.preventDefault();
-        let oficio = this.selectOficios.current.value;
-        let request = "api/empleados/empleadosoficio/" + oficio;
-        axios.get(this.urlEmpleados + request).then(response => {
-            console.log(response.data)
-            this.setState({
-                filtrados: response.data
+                empleados: response.data
             })
         })
     }
-
     componentDidMount = () => {
-        this.loadEmpleados();
         this.loadOficios();
     }
-
-    state = {
-        empleados: [],
-        oficios: [],
-        filtrados: null
+    buscarEmpleados = (event) => {
+        event.preventDefault();
+        let oficio = this.selectOficio.current.value;
+        let request = "api/empleados/empleadosoficio/" + oficio;
+        axios.get(this.url + request).then(response => {
+            console.log("Filtrando oficios")
+            this.setState({
+                empleadosOficios: response.data
+            })
+        })
     }
-
     render() {
-        return (<div>
-            <h1>Servicio empleados Solucion</h1>
-            <label>Seleccione oficio </label>
-            <select ref={this.selectOficios}>
-                <option />
-                {
-                    this.state.oficios.map((oficio, index) => {
-                        return (<option key={index}>{oficio}</option>)
-                    })
-                }
-            </select>
-            <button onClick={this.loadEmpleadosOficio}>Cargar empleados</button>
-            {this.state.filtrados && (
+        return (
+            <div>
+                <h1>Empleados Oficios Solucion</h1>
+                <form>
+                    <select ref={this.selectOficio}>
+                        {
+                            this.state.empleados.map((empleado, index) => {
+                                return (<option key={index}>{empleado.oficio}</option>)
+                            })
+                        }
+                    </select>
+                    <button onClick={this.buscarEmpleados}>
+                        Buscar empleados
+                    </button>
+                </form>
                 <table border="1">
                     <thead>
                         <tr>
@@ -84,16 +63,17 @@ export default class EmpleadosOficiosSolucion extends Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.filtrados.map((persona, index) => {
+                            this.state.empleadosOficios.map((empleado, index) => {
                                 return (<tr key={index}>
-                                    <td>{persona.apellido}</td>
-                                    <td>{persona.oficio}</td>
-                                    <td>{persona.salario}</td>
+                                    <td>{empleado.apellido}</td>
+                                    <td>{empleado.oficio}</td>
+                                    <td>{empleado.salario}</td>
                                 </tr>)
                             })
                         }
                     </tbody>
-                </table>)}
-        </div>)
+                </table>
+            </div>
+        )
     }
-}
+} 
