@@ -8,6 +8,9 @@ export default class MenuRutas extends Component {
                     <a href="/">Home</a>
                 </li>
                 <li>
+                    <a href="/collatz/21">Collatz 21</a>
+                </li>
+                <li>
                     <a href="/tabla/21">Tabla multiplicar 21</a>
                 </li>
                 <li>

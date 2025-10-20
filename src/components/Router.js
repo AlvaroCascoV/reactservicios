@@ -4,6 +4,7 @@ import Home from './Home'
 import NotFound from './NotFound'
 import TablaMultiplicar from './TablaMultiplicar'
 import { useParams } from 'react-router-dom'
+import Collatz from './Collatz'
 
 export default class Router extends Component {
     render() {
@@ -15,11 +16,16 @@ export default class Router extends Component {
             //DEVOLVEMOS EL COMPONENTE TablaMultiplicar CON SUS props
             return <TablaMultiplicar numero={minumero} />
         }
+        function CollatzElement() {
+            let { minumero } = useParams();
+            return <Collatz numero={minumero} />
+        }
         return (
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/tabla/:minumero" element={<TablaMultiplicarElement />} />
+                    <Route path="/collatz/:minumero" element={<CollatzElement />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
