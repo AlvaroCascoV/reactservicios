@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle';
 // import EmpleadosOficios from './components/EmpleadosOficios';
 // import EmpleadosOficiosSolucion from './components/EmpleadosOficiosSolucion';
 // import ServiciosApiCustomers from './components/ServiciosApiCustomers';
@@ -12,7 +16,6 @@ import reportWebVitals from './reportWebVitals';
 // import Cursos from './components/ejemplocomunicacion/Cursos';
 // import TablaMultiplicar from './components/TablaMultiplicar';
 import Router from './components/Router';
-import MenuRutas from './components/MenuRutas';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,7 +29,6 @@ root.render(
   // <Cursos />
   // <TablaMultiplicar numero="7" />
   <div style={{ margin: "auto", width: "50%" }}>
-    <MenuRutas />
     <Router />
   </div>
 );
