@@ -3,6 +3,7 @@ var Global = {
     urlEmpleados: "https://apiempleadosspgs.azurewebsites.net/",
     urlDepartamentos: "https://apicruddepartamentospgs.azurewebsites.net/",
     urlEmpleadosOficios: "https://apiempleadosspgs.azurewebsites.net/",
-    urlAlumnos: "https://apiejemplos.azurewebsites.net/api/alumnos/"
+    urlAlumnos: "https://apiejemplos.azurewebsites.net/api/alumnos/",
+    apiTrabajadores: "https://apiejemplos.azurewebsites.net/"
 }
 export default Global;

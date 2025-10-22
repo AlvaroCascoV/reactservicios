@@ -15,7 +15,8 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 // import Departamentos from './components/maestrodetalle/Departamentos';
 // import Cursos from './components/ejemplocomunicacion/Cursos';
 // import TablaMultiplicar from './components/TablaMultiplicar';
-import Router from './components/Router';
+// import Router from './components/Router';
+import HospitalesMultiple from './components/HospitalesMultiple';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,7 +30,8 @@ root.render(
   // <Cursos />
   // <TablaMultiplicar numero="7" />
   <div style={{ margin: "auto", width: "50%" }}>
-    <Router />
+    {/* <Router /> */}
+    <HospitalesMultiple />
   </div>
 );
 
